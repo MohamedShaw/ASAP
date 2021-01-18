@@ -12,6 +12,7 @@ export const onAppLaunch = () => {
   } else {
     //noAuth
     AppNavigation.setRootScreen('intro');
+
   }
 
   // if (__DEV__) checkUpdate();

@@ -1,4 +1,4 @@
 {
-  "GRAPHQL_ENDPOINT": "http://167.99.10.248:4014/graphql",
-  "GOOGLEAPIS":"https://maps.googleapis.com/maps/api/geocode/json"
+  "API_ENDPOINT": "https://fakestoreapi.com",
+  "GOOGLEAPIS": "https://maps.googleapis.com/maps/api/geocode/json"
 }

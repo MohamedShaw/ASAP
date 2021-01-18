@@ -1,4 +1,5 @@
 export default {
   welcome: "مرحبا",
-  home: "ااا"
+  home: "ااا",
+  name: "محمد"
 }

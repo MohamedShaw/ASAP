@@ -14,6 +14,7 @@ export const available_languages = {
 };
 
 export const setLang = (lang: Lang) => {
+
   i18n.locale = lang;
 }
 
