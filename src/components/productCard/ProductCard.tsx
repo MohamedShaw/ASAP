@@ -27,6 +27,7 @@ export const ProductCard: React.FC<Props> = (props) => {
   const onNavigate = () => {
     AppNavigation.push('productDetails', {
       data: props.data,
+      deepLink: false,
     });
   };
   return (

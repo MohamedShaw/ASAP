@@ -15,6 +15,8 @@ interface Props {
   hideBack?: boolean;
   rightItem?: ReactElement;
   onBackPress?: () => void;
+  cart?: boolean;
+  home?: boolean;
 }
 
 export const AppHeader = (props: Props) => {
@@ -23,6 +25,8 @@ export const AppHeader = (props: Props) => {
     hideBack,
     rightItem,
     onBackPress = () => AppNavigation.pop(),
+    cart,
+    home = false,
   } = props;
   const {
     colors: {iconColor, backgroundColor},
@@ -45,6 +49,18 @@ export const AppHeader = (props: Props) => {
               />
             </FixedNeomorphContainer>
           )}
+          {home && (
+            <FixedNeomorphContainer style={styles.back_icon_container}>
+              <AppIconButton
+                onPress={onBackPress}
+                style={styles.back_icon}
+                containerStyle={styles.back_icon_container}
+                name="home"
+                size={20}
+                color={iconColor}
+              />
+            </FixedNeomorphContainer>
+          )}
         </View>
         <View style={[styles.content, styles.items]}>
           <AppText
@@ -53,7 +69,23 @@ export const AppHeader = (props: Props) => {
             {title}
           </AppText>
         </View>
-        <View style={[styles.right, styles.items]}>{rightItem}</View>
+        <View style={[styles.right, styles.items]}>
+          {cart ? (
+            <FixedNeomorphContainer style={styles.back_icon_container}>
+              <AppIconButton
+                onPress={onBackPress}
+                style={styles.back_icon}
+                containerStyle={styles.back_icon_container}
+                name="cart"
+                size={20}
+                type={IconType.feather}
+                color={iconColor}
+              />
+            </FixedNeomorphContainer>
+          ) : (
+            rightItem
+          )}
+        </View>
       </View>
     </>
   );

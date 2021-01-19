@@ -1,12 +1,9 @@
-import { StyleSheet } from "react-native";
-import i18n from "react-native-i18n";
-import { Lang } from "translation";
+import { StyleSheet } from 'react-native';
 
 
 export const styles = StyleSheet.create({
     container: {
         flex: 1,
-        // alignSelf: 'stretch'
-
-    }
-})
+        alignItems: 'center',
+    },
+});

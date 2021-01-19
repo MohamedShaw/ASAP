@@ -10,7 +10,7 @@ export const Home: NavigationFunctionComponent = () => {
   return (
     <>
       <AppScreenContainer style={styles.conatiner}>
-        <AppHeader title={I18n.t('home_header')} />
+        <AppHeader title={I18n.t('home_header')} hideBack cart home />
         <ProductList />
       </AppScreenContainer>
       <BottomTabs />

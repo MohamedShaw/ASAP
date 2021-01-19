@@ -34,6 +34,9 @@ export const Details: React.FC<Props> = (props) => {
   );
 
   const color = {color: titleColor};
+  if (!title) {
+    return null;
+  }
   return (
     <ScrollView style={styles.container}>
       <AppImage
