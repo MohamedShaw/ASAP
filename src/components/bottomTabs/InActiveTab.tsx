@@ -6,7 +6,7 @@ import {styles} from './style';
 import {useSelector} from 'react-redux';
 import {RootStore} from 'store';
 import {RectButton} from 'react-native-gesture-handler';
-import {TouchableWithoutFeedback, View} from 'react-native';
+import {TouchableWithoutFeedback, View, Alert} from 'react-native';
 
 export const InActiveTabIcon: React.FC<Props> = (props: Props) => {
   const {iconName, iconType, onSelect} = props;
@@ -15,7 +15,10 @@ export const InActiveTabIcon: React.FC<Props> = (props: Props) => {
   );
 
   return (
-    <TouchableWithoutFeedback onPress={onSelect}>
+    <TouchableWithoutFeedback
+      onPress={() => {
+        onSelect();
+      }}>
       <View style={styles.icon}>
         <FixedNeomorphContainer style={styles.icon_container}>
           <AppIcon

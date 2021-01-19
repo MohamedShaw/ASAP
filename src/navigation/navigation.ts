@@ -1,6 +1,10 @@
 import { Component } from 'react';
 import { BackHandler, EmitterSubscription, Platform } from 'react-native';
-import { LayoutBottomTabs, LayoutTabsChildren, Navigation } from 'react-native-navigation';
+import {
+  LayoutBottomTabs,
+  LayoutTabsChildren,
+  Navigation,
+} from 'react-native-navigation';
 
 export class CustomNavigation {
   private static appNavigation: CustomNavigation;
@@ -14,7 +18,6 @@ export class CustomNavigation {
   currentScreen?: string;
   prevScreen?: string;
   currentComponentId?: string;
-
 
   private constructor() {
     this.isInit = true;
@@ -31,28 +34,27 @@ export class CustomNavigation {
       CustomNavigation.appNavigation = new CustomNavigation();
     }
     return CustomNavigation.appNavigation;
-  };
-
+  }
 
   push = (name: string, passProps?: Object) => {
-
-
-    if (name === this.currentScreen || !this.currentComponentId) return;
+    if (name === this.currentScreen || !this.currentComponentId) {
+      return;
+    }
 
     return Navigation.push(this.currentComponentId, {
       component: {
         id: name,
         name,
-        passProps
-      }
+        passProps,
+      },
     });
-
   };
 
-
   pop = async () => {
-    console.log(">>>>>pop", !this.currentComponentId)
-    if (!this.currentComponentId) return;
+    console.log('>>>>>pop', !this.currentComponentId);
+    if (!this.currentComponentId) {
+      return;
+    }
     //pop stack
     if (this.firstComponentNewInStack == this.currentComponentId) {
       return this.popStack();
@@ -63,78 +65,109 @@ export class CustomNavigation {
 
   popTo = (popTo: string) => {
     return Navigation.popTo(popTo);
-  }
-
+  };
 
   setRootScreen = (name: string, passProps?: Object) => {
     return Navigation.setRoot({
       root: {
         stack: {
           id: CustomNavigation.MAIN_STACK,
-          children: [{
-            component: {
-              id: name,
-              name,
-              passProps
-            }
-          }],
+          children: [
+            {
+              component: {
+                id: name,
+                name,
+                passProps,
+              },
+            },
+          ],
         },
       },
     });
   };
 
+  navigateToTab = (currentTabIndex: any) => {
+    console.log("currentTabIndex", currentTabIndex, this.currentComponentId);
 
+    Navigation.mergeOptions(this.currentComponentId, {
+      bottomTabs: {
+        currentTabIndex,
+      },
+    });
+  };
   setRootBottomTabs = (tabs: string[], passProps?: Object) => {
-    const children: LayoutTabsChildren[] = tabs.map((tab) => ({ component: { id: tab, name: tab } }));
+
+
+    const children: LayoutTabsChildren[] = tabs.map((i) => ({
+      stack: {
+        id: i,
+        children: [
+          {
+            component: {
+              // id: 'HOME_SCREEN',
+              name: i.screen,
+            },
+            options: {
+              bottomTab: {
+                icon: require('../assets/img/noData.png')
+              }
+            }
+          },
+        ],
+      },
+    }));
+    console.log('children', children);
+
+
+
 
     return Navigation.setRoot({
       root: {
         bottomTabs: {
-          children
-        }
-      }
+          children: children,
+        },
+      },
     });
   };
 
   setCurrentTabIndex = (currentTabIndex: number) => {
-    if (!this.currentComponentId) return;
+    if (!this.currentComponentId) {
+      return;
+    }
     Navigation.mergeOptions(this.currentComponentId, {
       bottomTabs: {
-        currentTabIndex
-      }
+        currentTabIndex,
+      },
     });
-
-  }
-
+  };
 
   showModal = (name: string, passProps?: Object, stackName?: string) => {
-    if (name === this.currentScreen) return;
+    if (name === this.currentScreen) {
+      return;
+    }
     this.currentStack = stackName ? stackName : 'modalStack';
     this.currentScreen = name;
     this.currentComponentId = name;
     return Navigation.showModal({
       stack: {
         id: this.currentStack,
-        children: [{
-          component: {
-            id: name,
-            name,
-            passProps
-          }
-        }],
+        children: [
+          {
+            component: {
+              id: name,
+              name,
+              passProps,
+            },
+          },
+        ],
       },
     });
-
   };
 
-
   dismissAllModal = async () => {
-
     await Navigation.dismissAllModals();
     this.currentStack = CustomNavigation.MAIN_STACK;
   };
-
-
 
   goBack = () => {
     (async () => {
@@ -152,25 +185,21 @@ export class CustomNavigation {
     this.firstComponentNewInStack = undefined;
     this.currentStack = CustomNavigation.MAIN_STACK;
     return this.dismissAllModal();
-  }
+  };
 
   setStack = (stackName: string, screenName: string, passProps?: Object) => {
     this.lastComponentInMainStack = this.currentComponentId;
     this.firstComponentNewInStack = screenName;
     this.currentStack = stackName;
-    return this.showModal(screenName, passProps, stackName)
-  }
+    return this.showModal(screenName, passProps, stackName);
+  };
 
   registerBackHandlerListener = () => {
     Navigation.events().registerNavigationButtonPressedListener(() => {
-      console.log("navigation button");
+      console.log('navigation button');
     });
-    BackHandler.addEventListener('hardwareBackPress',
-      this.goBack
-    );
+    BackHandler.addEventListener('hardwareBackPress', this.goBack);
   };
-
-
 
   registerDidAppearListener = () => {
     Navigation.events().registerComponentDidAppearListener(
@@ -183,7 +212,6 @@ export class CustomNavigation {
     );
   };
 
-
   registerDidDisappearListener = () => {
     Navigation.events().registerComponentDidDisappearListener(
       ({ componentName }) => {
@@ -193,23 +221,18 @@ export class CustomNavigation {
     );
   };
 
-
   registerCommandCompletedListener = () => {
-    Navigation.events().registerCommandCompletedListener(
-      ({ commandId }) => {
-        this.lastCommand = commandId.replace(/[0-9]/g, '');
+    Navigation.events().registerCommandCompletedListener(({ commandId }) => {
+      this.lastCommand = commandId.replace(/[0-9]/g, '');
 
-        if (this.lastCommand === 'showModal') {
-          this.modalIsOn = true;
-        } else if (
-          this.lastCommand === 'dismissModal' ||
-          this.lastCommand === 'dismissAllModals'
-        ) {
-          this.modalIsOn = false;
-        }
-      },
-    );
+      if (this.lastCommand === 'showModal') {
+        this.modalIsOn = true;
+      } else if (
+        this.lastCommand === 'dismissModal' ||
+        this.lastCommand === 'dismissAllModals'
+      ) {
+        this.modalIsOn = false;
+      }
+    });
   };
-
 }
-

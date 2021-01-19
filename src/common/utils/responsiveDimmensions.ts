@@ -1,15 +1,49 @@
-import { Dimensions, PixelRatio, Platform, StatusBar } from "react-native";
+import { Dimensions, PixelRatio, Platform, StatusBar } from 'react-native';
+
+import { FONT_SIZE_DELTA } from './Constants';
+
+import I18n from "react-native-i18n"
+import { Lang } from 'translation';
 
 const { roundToNearestPixel } = PixelRatio;
+
+const decorateHeights = Platform.OS === 'android' ? StatusBar.currentHeight : 0;
+
+export const APPBAR_HEIGHT = Platform.OS === 'android' ? 56 : 60;
+
+export const { width: windowWidth } = Dimensions.get('window');
+export const windowHeight = Dimensions.get('window').height - decorateHeights;
+
+export const { width: screenWidth } = Dimensions.get('screen');
+export const screenHeight = Dimensions.get('screen').height - decorateHeights;
 
 const maxWidth = 420;
 const maxHeight = 800;
 
-export const decorateHeights = Platform.OS === "android" ? StatusBar.currentHeight : 0;
+export const aspectRatio = () => windowHeight / windowWidth;
 
-export const APPBAR_HEIGHT = Platform.OS === "ios" ? 60 : 60;
+export const responsiveWidth = (w) =>
+    roundToNearestPixel(Math.min(maxWidth, windowWidth) * (w / 100));
 
-export const { width: windowWidth, height: windowHeight } = Dimensions.get("window");
-export const { width: screenWidth, height: screenHeight } = Dimensions.get("screen");
+export const responsiveHeight = (h) =>
+    roundToNearestPixel(Math.min(maxHeight, windowHeight) * (h / 100));
 
-export const aspectRatio = windowHeight / windowWidth;
+export const heightPercent = (h) =>
+    parseFloat(((h / windowHeight) * 100).toFixed(2));
+
+export const moderateScale = (size, factor = 0.5) => {
+    const rw = Math.min(maxWidth, windowWidth) * (size / 100);
+
+    return roundToNearestPixel(size + (rw - size) * factor);
+};
+
+export const responsiveFontSize = (f, factor = 0.5) => {
+    const rw = Math.min(maxWidth, windowWidth) * (f / 100);
+
+    const rtl = I18n.locale == Lang.ar;
+    return roundToNearestPixel(
+        f + (rw - f) * factor * (rtl ? 1 : FONT_SIZE_DELTA),
+    );
+};
+
+//export { windowWidth, windowHeight, screenWidth, screenHeight };

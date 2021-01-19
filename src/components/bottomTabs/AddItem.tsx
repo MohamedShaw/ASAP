@@ -9,7 +9,6 @@ import {
 import {styles} from './style';
 
 import {AppNavigation} from 'navigation';
-import I18n from 'react-native-i18n';
 
 export interface Props {}
 
@@ -19,7 +18,7 @@ export const AddItem: React.FC<Props> = (props: Props) => {
       <AppButton
         onPress={() => AppNavigation.push('selectCatogery')} 
         style={[styles.addItem]}
-        title={I18n.t('add_item')}
+        title={'Add Item'}
         textStyle={[styles.addItemText, {fontWeight: 'Bold'}]}
         leftItem={
           <AppIcon

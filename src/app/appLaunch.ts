@@ -1,5 +1,6 @@
 import { AppNavigation } from '../navigation';
 import { rootStore } from '../store';
+import { tabs } from 'components/bottomTabs/BottomTabs';
 // import { checkUpdate } from 'utils/dev';
 
 export const onAppLaunch = () => {
@@ -11,7 +12,7 @@ export const onAppLaunch = () => {
     AppNavigation.setRootScreen('home');
   } else {
     //noAuth
-    AppNavigation.setRootScreen('intro');
+    AppNavigation.setRootBottomTabs(tabs);
 
   }
 

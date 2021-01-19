@@ -8,7 +8,6 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',
-    marginHorizontal:26
   },
   icon: {
     flex: 1,
@@ -37,10 +36,12 @@ export const styles = StyleSheet.create({
   },
   addItemContainer: {
     height: 45,
-    width: 119,
+    width: 115,
     borderRadius: 15,
     justifyContent: 'center',
     alignItems: 'center',
+    position: 'absolute',
+    left: '23.5%',
   }
 
 });
