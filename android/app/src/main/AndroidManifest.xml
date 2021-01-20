@@ -21,7 +21,7 @@
         <category android:name="android.intent.category.DEFAULT" />
         <category android:name="android.intent.category.BROWSABLE" />
         <!-- Accepts URIs that begin with "http://www.task.com/products -->
-        <data android:scheme="http" android:host="www.task.com" android:pathPrefix="/products" />
+        <data android:scheme="http" android:host="www.task.com" />
         <!-- note that the leading "/" is required for pathPrefix-->
       </intent-filter>
     </activity>

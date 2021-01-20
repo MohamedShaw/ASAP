@@ -25,8 +25,9 @@ const deebLink = () => {
     const route = event.url.replace(/.*?:\/\//g, '');
     const productId = route.split('/');
     if (productId[0] === 'www.task.com') {
+      const id = typeof +productId[2] === 'number' ? +productId[2] : 1
       AppNavigation.push('productDetails', {
-        id: +productId[2],
+        id: id,
         deepLink: true,
       });
     }

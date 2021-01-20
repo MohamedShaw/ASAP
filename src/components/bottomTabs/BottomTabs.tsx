@@ -32,7 +32,7 @@ export const tabs = [
     // iconType: IconType.foundation,
   },
   {
-    screen: 'intro',
+    screen: 'profile',
     label: 'Add Item',
     iconName: 'add',
     // iconType: IconType.antDesign,

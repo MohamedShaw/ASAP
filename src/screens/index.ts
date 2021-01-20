@@ -3,11 +3,17 @@ import { Screen } from '../navigation'
 import { Intro } from './Intro/Intro';
 import { Home } from './home/Home';
 import { ProductDetails } from './productDetails/ProductDetails';
+import { Cart } from './cart/Cart';
+import { MapScreen } from './mapScreen/MapScreen';
 
 export const screens: Screen[] = [
-  { name: "intro", component: Intro },
+  { name: "profile", component: Intro },
   { name: "home", component: Home },
-  { name: "productDetails", component: ProductDetails }
+  { name: "productDetails", component: ProductDetails },
+  { name: "cart", component: Cart },
+  { name: "mapScreen", component: MapScreen }
+
+
 
 ];
 

@@ -9,6 +9,7 @@ import I18n from 'react-native-i18n';
 import {ProductCard} from '../productCard/ProductCard';
 import {EmptyList} from '../emptyList/EmptyList';
 import {UseProductList, getProductList} from 'api/ProductApi';
+import {useCart} from 'slices/cart';
 interface Props {}
 export const ProductList: React.FC<Props> = () => {
   const [loading, setLoading] = useState<Boolean>(true);
@@ -47,6 +48,7 @@ export const ProductList: React.FC<Props> = () => {
       </View>
     ) : null;
   };
+
   return (
     <AppList
       data={data}

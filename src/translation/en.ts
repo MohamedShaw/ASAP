@@ -6,5 +6,7 @@ export default {
   product_description: 'Description',
   product_price: 'Price',
   error: "Error happen",
-  close: "close"
+  close: "close",
+  cart_header: "Cart",
+  total: "Total"
 };

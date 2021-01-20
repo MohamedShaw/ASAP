@@ -14,8 +14,6 @@ export { NeomorphContainer } from './neomorphContainer/NeomorphContainer';
 export { AppText } from './text/Text';
 export { LIGHT_COLORS, DARK_COLORS, LIGHT_FONTS, DARK_FONTS } from './Theme';
 export { AppIcon } from './icon/Icon';
-export { AppCheckbox } from './checkbox/Checkbox';
-export { AppRadioButton } from './radioButton/RadioButton';
 
 export { IconType, registerCustomIconType } from './utils/icon';
 export * from './utils/localNotifications';

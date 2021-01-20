@@ -1,1 +1,0 @@
-export interface VerifyCodeData { verificationCode: string, phone: string }

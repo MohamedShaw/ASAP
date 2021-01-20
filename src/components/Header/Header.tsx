@@ -5,10 +5,12 @@ import {AppText} from 'common/text/Text';
 import {IconType} from 'common/utils/icon';
 import {styles} from './styles';
 import {FixedNeomorphContainer} from 'common/fixedneomorphContainer/FixedNeomorphContainer';
-import {useSelector} from 'react-redux';
+import {useSelector, useDispatch} from 'react-redux';
 import {RootStore} from 'store';
 import {AppNavigation} from 'navigation';
 import {useTheme} from 'slices';
+import {LIGHT_COLORS, responsiveFontSize} from 'common';
+import {addToCart} from 'slices/cart';
 
 interface Props {
   title?: string;
@@ -32,6 +34,10 @@ export const AppHeader = (props: Props) => {
     colors: {iconColor, backgroundColor},
   } = useTheme();
 
+  const navigatToCart = () => {
+    AppNavigation.push('cart');
+  };
+  const dispatch = useDispatch();
   return (
     <>
       <SafeAreaView style={{backgroundColor}} />
@@ -71,17 +77,46 @@ export const AppHeader = (props: Props) => {
         </View>
         <View style={[styles.right, styles.items]}>
           {cart ? (
-            <FixedNeomorphContainer style={styles.back_icon_container}>
-              <AppIconButton
-                onPress={onBackPress}
-                style={styles.back_icon}
-                containerStyle={styles.back_icon_container}
-                name="cart"
-                size={20}
-                type={IconType.feather}
-                color={iconColor}
-              />
-            </FixedNeomorphContainer>
+            <View
+              style={[
+                styles.back_icon_container,
+                {
+                  height: 50,
+                  width: 50,
+                  // backgroundColor: 'green',
+                  alignItems: 'center',
+                },
+              ]}>
+              <FixedNeomorphContainer style={styles.back_icon_container}>
+                <AppIconButton
+                  onPress={navigatToCart}
+                  style={styles.back_icon}
+                  containerStyle={styles.back_icon_container}
+                  name="ios-cart-outline"
+                  size={20}
+                  type={IconType.ionicons}
+                  color={iconColor}
+                />
+              </FixedNeomorphContainer>
+              <View
+                style={{
+                  width: 18,
+                  height: 18,
+                  borderRadius: 36,
+                  backgroundColor: LIGHT_COLORS.primary,
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                }}>
+                <AppText
+                  style={{color: 'white', fontSize: responsiveFontSize(4)}}>
+                  0
+                </AppText>
+              </View>
+            </View>
           ) : (
             rightItem
           )}

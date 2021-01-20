@@ -1,5 +1,5 @@
-import { StyleSheet } from "react-native";
-import { LIGHT_COLORS, responsiveFontSize } from "common";
+import { StyleSheet } from 'react-native';
+import { LIGHT_COLORS, responsiveFontSize } from 'common';
 
 export const styles = StyleSheet.create({
     buttonContainer: {
@@ -12,11 +12,11 @@ export const styles = StyleSheet.create({
     imageContainer: {
         flex: 1,
         height: 150,
-        marginHorizontal: 7
+        marginHorizontal: 7,
     },
     textContainer: {
         flex: 2,
-        paddingTop: 10
+        paddingTop: 10,
         // backgroundColor: "red"
     },
     tagCategory: {
@@ -39,13 +39,30 @@ export const styles = StyleSheet.create({
 
         marginHorizontal: 15,
     },
-    textColor: { color: LIGHT_COLORS.titleColor, },
+    textColor: { color: LIGHT_COLORS.titleColor },
     neoMorphContainer: {
         flex: 1,
         // marginHorizontal: 15,
         marginBottom: 10,
         backgroundColor: 'white',
+    },
+    back_icon_container: {
+        height: 38,
+        width: 38,
+        borderRadius: 9.6,
+
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    trashIcon: { position: 'absolute', top: 10, right: 5 },
+    counterStyle: {
+        color: LIGHT_COLORS.primary,
+        fontSize: responsiveFontSize(6),
+        marginHorizontal: 15,
+    },
+    actionContainer: {
+        alignSelf: 'stretch',
+        flexDirection: 'row',
+        alignItems: 'center',
     }
-
-
-})
+});

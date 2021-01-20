@@ -7,7 +7,9 @@ export default {
   product_description: "الوصف",
   product_price: "السعر",
   error: "لقد حدث خطآ",
-  close: "اغلق"
+  close: "اغلق",
+  cart_header: "السله",
+  total: "المجموع"
 
 
 }

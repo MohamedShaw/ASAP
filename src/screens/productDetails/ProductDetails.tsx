@@ -17,13 +17,9 @@ export const ProductDetails: NavigationFunctionComponent = (props) => {
   const [productData, setData] = useState(!data ? null : data);
 
   useEffect(() => {
-    console.log('id ---->>', id);
-
     if (id) getProduct();
   }, []);
   const getProduct = async () => {
-    console.log('product');
-
     setLoading(true);
     try {
       const res = await axios.get(`${API_ENDPOINT}products/${id}`);

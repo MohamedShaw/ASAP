@@ -12,6 +12,8 @@ target 'kawkibinana' do
 
   pod 'ReactNativeART', :path => '../node_modules/@react-native-community/art'
 
+  pod 'react-native-connectivity-status', :path => '../node_modules/react-native-connectivity-status'
+
   target 'kawkibinanaTests' do
     inherit! :complete
     # Pods for testing

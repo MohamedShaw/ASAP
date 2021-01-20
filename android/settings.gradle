@@ -1,4 +1,6 @@
 rootProject.name = 'kawkibinana'
+include ':react-native-connectivity-status'
+project(':react-native-connectivity-status').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-connectivity-status/android')
 include ':@react-native-community_art'
 project(':@react-native-community_art').projectDir = new File(rootProject.projectDir, '../node_modules/@react-native-community/art/android')
 include ':react-native-vector-icons'
