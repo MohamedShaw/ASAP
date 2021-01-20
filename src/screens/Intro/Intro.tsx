@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Alert, SafeAreaView, View, I18nManager} from 'react-native';
+import {Alert, SafeAreaView, View, I18nManager, Linking} from 'react-native';
 import {NavigationFunctionComponent} from 'react-native-navigation';
 
 // import {  } from 'components';
@@ -8,29 +8,71 @@ import {styles} from './style';
 import FloatingInpu from 'common/input/FloatingInpu';
 import I18n from 'react-native-i18n';
 import {setLang, Lang} from 'translation';
-import {BottomTabs} from 'components';
+import {BottomTabs, AppHeader} from 'components';
+import {AppNavigation} from 'navigation';
+import {locationPermission} from 'utils/requestPermissionsAndroid';
+import {checkNotifications} from 'react-native-permissions';
 
 export const Intro: NavigationFunctionComponent = (props) => {
-  const [text, setText] = useState('');
-  console.log('text', text);
-
   return (
     <>
+      <AppHeader title={I18n.t('profile')} hideBack cart />
       <AppScreenContainer style={styles.conatiner}>
         <SafeAreaView />
-        <AppText>{I18n.t('name')}</AppText>
 
         <View
           style={{
-            flex: 1,
-            alignSelf: 'stretch',
-            justifyContent: 'center',
             alignItems: 'center',
+            flexDirection: 'row',
+            height: 120,
           }}>
           <AppButton
             title="changel Lang"
             onPress={() => {
-              setLang(I18n.locale == Lang.ar ? Lang.en : Lang.ar);
+              console.log('I18n.locale ', I18n.locale);
+
+              setLang(I18n.locale === Lang.ar ? Lang.en : Lang.ar);
+            }}
+            style={{
+              flex: 1,
+            }}
+          />
+          <View style={{width: 20}} />
+          <AppButton
+            title="Adresses"
+            onPress={() => {
+              AppNavigation.push('addresses');
+            }}
+            style={{
+              flex: 1,
+            }}
+          />
+        </View>
+
+        <View
+          style={{
+            justifyContent: 'center',
+            alignItems: 'center',
+            flexDirection: 'row',
+          }}>
+          <AppButton
+            title=" enable notification"
+            onPress={() => {
+              Linking.openSettings();
+            }}
+            style={{
+              flex: 1,
+            }}
+          />
+          <View style={{width: 20}} />
+
+          <AppButton
+            title="enable Location"
+            onPress={() => {
+              locationPermission();
+            }}
+            style={{
+              flex: 1,
             }}
           />
         </View>

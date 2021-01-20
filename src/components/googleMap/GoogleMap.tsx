@@ -12,12 +12,11 @@ interface Props {
 
 export const GoogleMap: React.FC<Props> = (props) => {
   const {onChangeLocation, location} = props;
+
   const mapViewRef = useRef<MapView>(null);
 
   const animateToMyLocation = useCallback(
     (loc) => {
-      console.log('🚀 ~ file: GoogleMap.tsx ~ line 33 ~ loc', loc);
-
       mapViewRef?.current?.animateToRegion(
         {
           ...loc,

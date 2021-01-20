@@ -7,22 +7,11 @@ export const styles = StyleSheet.create({
         paddingHorizontal: 0,
         paddingVertical: 0
     },
-    imageContainer: {
-        flex: 1,
-        height: 150,
-        marginHorizontal: 7
-    },
-    textContainer: {
-        flex: 2,
-        paddingTop: 10
-        // backgroundColor: "red"
-    },
+
     listContainer: {
         alignSelf: 'stretch',
     },
-    spinnerContainer: {
-        height: 80
-    },
+
     totalContainer: {
         backgroundColor: LIGHT_COLORS.primary,
         height: 60,

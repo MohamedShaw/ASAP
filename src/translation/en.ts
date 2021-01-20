@@ -5,8 +5,12 @@ export default {
   product_title: 'Product Title',
   product_description: 'Description',
   product_price: 'Price',
-  error: "Error happen",
-  close: "close",
-  cart_header: "Cart",
-  total: "Total"
+  error: 'Error happen',
+  close: 'close',
+  cart_header: 'Cart',
+  total: 'Total',
+  profile: 'Profile',
+  Add_location: 'Add Location',
+  loading_dots: 'loading ...',
+  Location: 'Location',
 };

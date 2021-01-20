@@ -37,7 +37,6 @@ export const AppHeader = (props: Props) => {
   const navigatToCart = () => {
     AppNavigation.push('cart');
   };
-  const dispatch = useDispatch();
   return (
     <>
       <SafeAreaView style={{backgroundColor}} />
@@ -67,6 +66,7 @@ export const AppHeader = (props: Props) => {
               />
             </FixedNeomorphContainer>
           )}
+          {!home && hideBack && <View style={styles.back_icon_container} />}
         </View>
         <View style={[styles.content, styles.items]}>
           <AppText
@@ -83,7 +83,6 @@ export const AppHeader = (props: Props) => {
                 {
                   height: 50,
                   width: 50,
-                  // backgroundColor: 'green',
                   alignItems: 'center',
                 },
               ]}>
@@ -106,7 +105,7 @@ export const AppHeader = (props: Props) => {
                   backgroundColor: LIGHT_COLORS.primary,
                   position: 'absolute',
                   top: 0,
-                  left: 0,
+                  right: 0,
 
                   justifyContent: 'center',
                   alignItems: 'center',

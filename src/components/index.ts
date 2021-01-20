@@ -9,3 +9,5 @@ export * from './reqLocationPermissionModal/ReqLocationPermissionModal';
 export * from './mapFooter/MapFooter';
 export * from './googleMap/GoogleMap';
 export * from './marker/Marker'
+export * from './addressList/AddressList'
+

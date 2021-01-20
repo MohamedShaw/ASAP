@@ -12,11 +12,12 @@ import i18n from 'react-native-i18n';
 import {useDebouncedCallback} from 'use-debounce/lib';
 
 interface Props {
-  onSubmit: (location: LatLng) => void;
+  onSubmit: (location: LatLng, address) => void;
   intailLocation?: LatLng;
 }
 export const MapHOC: React.FC<Props> = ({onSubmit, intailLocation}) => {
   const {position} = useLocation();
+
   const [location, setLocation] = useState<LatLng>(
     intailLocation || (position?.coords as LatLng),
   );
@@ -26,6 +27,12 @@ export const MapHOC: React.FC<Props> = ({onSubmit, intailLocation}) => {
 
   useEffect(() => {
     let cancel;
+    if (position) {
+      let {latitude, longitude} = position?.coords;
+      const loc = {latitude, longitude};
+      searchLocation.current = loc;
+    }
+
     if (location) {
       (async () => {
         setAdress(i18n.t('loading_dots'));
@@ -39,7 +46,7 @@ export const MapHOC: React.FC<Props> = ({onSubmit, intailLocation}) => {
     return () => {
       if (cancel) cancel('cancel');
     };
-  }, [location]);
+  }, [location, position]);
 
   const _onChangeLocation = useDebouncedCallback((location: LatLng) => {
     setLocation(location);
@@ -59,7 +66,10 @@ export const MapHOC: React.FC<Props> = ({onSubmit, intailLocation}) => {
         location={searchLocation.current}
         onChangeLocation={_onChangeLocation}
       />
-      <MapFooter address={address} onSubmit={onSubmit.bind(this, location)} />
+      <MapFooter
+        address={address}
+        onSubmit={onSubmit.bind(this, location, address)}
+      />
       <RelocateLocationButton onRelocateLocation={relocateLocation} />
     </>
   );

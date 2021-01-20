@@ -1,7 +1,7 @@
 import React from 'react';
 import {styles} from './style';
-import {Alert, View} from 'react-native';
-import {AppImage, AppButton, AppText, AppModal, AppTextButton} from 'common';
+import {View} from 'react-native';
+import {AppButton, AppText, AppModal, AppTextButton} from 'common';
 import {useTheme} from 'slices/theme';
 import i18n from 'react-native-i18n';
 

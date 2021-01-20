@@ -7,7 +7,6 @@ export const styles = StyleSheet.create({
         alignSelf: 'stretch',
         backgroundColor: 'transparent',
         flexDirection: 'row',
-        // paddingHorizontal: 10,
     },
     imageContainer: {
         flex: 1,

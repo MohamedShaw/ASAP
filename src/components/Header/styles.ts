@@ -17,11 +17,11 @@ export const styles = StyleSheet.create({
   title: {
     textAlign: 'center',
     fontSize: 20,
-    lineHeight: 34
+    lineHeight: 34,
   },
   content: {
     flex: 1,
-    justifyContent: 'flex-start'
+    justifyContent: 'flex-start',
   },
   left: {
     justifyContent: 'flex-start'

@@ -18,3 +18,4 @@ export { AppIcon } from './icon/Icon';
 export { IconType, registerCustomIconType } from './utils/icon';
 export * from './utils/localNotifications';
 export * from './utils/responsiveDimmensions';
+export { AppModal } from "./modal/Modal"
