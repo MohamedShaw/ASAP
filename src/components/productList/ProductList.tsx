@@ -22,6 +22,8 @@ export const ProductList: React.FC<Props> = () => {
     try {
       const response = await getProductList(pageNumber);
 
+      console.log('reponse', response);
+
       const dataToShow = [...response];
       setData(dataToShow);
     } catch (error) {

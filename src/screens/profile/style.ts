@@ -5,5 +5,10 @@ export const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center'
+  },
+  buttonContainer: {
+    alignItems: 'center',
+    flexDirection: 'row',
+    height: 120,
   }
 })

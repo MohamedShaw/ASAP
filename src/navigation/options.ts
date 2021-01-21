@@ -41,7 +41,7 @@ export const setNavigationDefaultOptions = (options: Options = {}) => {
     ...defaultNavOptions,
     ...options,
     layout: {
-      direction: i18n.locale == Lang.ar ? 'rtl' : 'ltr',
+      direction: i18n.locale === Lang.ar ? 'rtl' : 'ltr',
       backgroundColor: 'white',
       orientation: ['portrait'],
     },

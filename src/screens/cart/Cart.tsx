@@ -10,7 +10,7 @@ export const Cart: NavigationFunctionComponent = () => {
     <>
       <AppHeader title={I18n.t('cart_header')} />
 
-      <AppScreenContainer style={{flex: 1, alignSelf: 'stretch'}}>
+      <AppScreenContainer style={styles.container}>
         <ShoppingCartList />
       </AppScreenContainer>
     </>

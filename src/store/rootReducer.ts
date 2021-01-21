@@ -18,7 +18,7 @@ const persistConfig: PersistConfig<RootStore> = {
   key: 'root',
   storage: AsyncStorage,
   version: 1,
-  whitelist: ['auth']
+  whitelist: ['auth', 'cart']
 }
 
 export const rootReducer = persistReducer(persistConfig, reducers);

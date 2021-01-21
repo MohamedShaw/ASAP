@@ -19,7 +19,7 @@ export const InActiveTabIcon: React.FC<Props> = (props: Props) => {
       onPress={() => {
         onSelect();
       }}>
-      <View style={styles.icon}>
+      <View style={[styles.icon]}>
         <FixedNeomorphContainer style={styles.icon_container}>
           <AppIcon
             color={bottomTabsIconColor}

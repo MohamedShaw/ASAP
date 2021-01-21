@@ -1,37 +1,30 @@
 import React, {useState} from 'react';
-import {Alert, SafeAreaView, View, I18nManager, Linking} from 'react-native';
+import {SafeAreaView, View, Linking} from 'react-native';
 import {NavigationFunctionComponent} from 'react-native-navigation';
 
 // import {  } from 'components';
-import {AppScreenContainer, AppText, AppInput, AppButton} from 'common';
+import {AppScreenContainer, AppButton} from 'common';
 import {styles} from './style';
-import FloatingInpu from 'common/input/FloatingInpu';
 import I18n from 'react-native-i18n';
 import {setLang, Lang} from 'translation';
 import {BottomTabs, AppHeader} from 'components';
 import {AppNavigation} from 'navigation';
 import {locationPermission} from 'utils/requestPermissionsAndroid';
-import {checkNotifications} from 'react-native-permissions';
+import RNRestart from 'react-native-restart';
 
-export const Intro: NavigationFunctionComponent = (props) => {
+export const Profile: NavigationFunctionComponent = (props) => {
   return (
     <>
       <AppHeader title={I18n.t('profile')} hideBack cart />
       <AppScreenContainer style={styles.conatiner}>
         <SafeAreaView />
 
-        <View
-          style={{
-            alignItems: 'center',
-            flexDirection: 'row',
-            height: 120,
-          }}>
+        <View style={styles.buttonContainer}>
           <AppButton
-            title="changel Lang"
+            title={I18n.t('change_lang')}
             onPress={() => {
-              console.log('I18n.locale ', I18n.locale);
-
-              setLang(I18n.locale === Lang.ar ? Lang.en : Lang.ar);
+              setLang(I18n.locale == Lang.ar ? Lang.en : Lang.ar);
+              RNRestart.Restart();
             }}
             style={{
               flex: 1,
@@ -39,7 +32,7 @@ export const Intro: NavigationFunctionComponent = (props) => {
           />
           <View style={{width: 20}} />
           <AppButton
-            title="Adresses"
+            title={I18n.t('addresses_list')}
             onPress={() => {
               AppNavigation.push('addresses');
             }}
@@ -49,14 +42,9 @@ export const Intro: NavigationFunctionComponent = (props) => {
           />
         </View>
 
-        <View
-          style={{
-            justifyContent: 'center',
-            alignItems: 'center',
-            flexDirection: 'row',
-          }}>
+        <View style={styles.buttonContainer}>
           <AppButton
-            title=" enable notification"
+            title={I18n.t('enable_notification')}
             onPress={() => {
               Linking.openSettings();
             }}
@@ -67,7 +55,7 @@ export const Intro: NavigationFunctionComponent = (props) => {
           <View style={{width: 20}} />
 
           <AppButton
-            title="enable Location"
+            title={I18n.t('enable_location')}
             onPress={() => {
               locationPermission();
             }}
@@ -79,7 +67,7 @@ export const Intro: NavigationFunctionComponent = (props) => {
 
         <SafeAreaView />
       </AppScreenContainer>
-      <BottomTabs />
+      <BottomTabs {...props} />
     </>
   );
 };

@@ -1,5 +1,6 @@
 import { StyleSheet } from "react-native";
 import { APPBAR_HEIGHT } from 'common/utils/responsiveDimmensions';
+import { LIGHT_COLORS } from "common";
 
 export const styles = StyleSheet.create({
   container: {
@@ -39,5 +40,17 @@ export const styles = StyleSheet.create({
     alignItems: 'center'
   },
   back_icon: {
+  },
+  countText: {
+    width: 18,
+    height: 18,
+    borderRadius: 36,
+    backgroundColor: LIGHT_COLORS.primary,
+    position: 'absolute',
+    top: 0,
+    right: 0,
+
+    justifyContent: 'center',
+    alignItems: 'center',
   }
 });

@@ -10,7 +10,7 @@ import {RootStore} from 'store';
 import {AppNavigation} from 'navigation';
 import {useTheme} from 'slices';
 import {LIGHT_COLORS, responsiveFontSize} from 'common';
-import {addToCart} from 'slices/cart';
+import {addToCart, useCart} from 'slices/cart';
 
 interface Props {
   title?: string;
@@ -34,9 +34,6 @@ export const AppHeader = (props: Props) => {
     colors: {iconColor, backgroundColor},
   } = useTheme();
 
-  const navigatToCart = () => {
-    AppNavigation.push('cart');
-  };
   return (
     <>
       <SafeAreaView style={{backgroundColor}} />
@@ -76,51 +73,47 @@ export const AppHeader = (props: Props) => {
           </AppText>
         </View>
         <View style={[styles.right, styles.items]}>
-          {cart ? (
-            <View
-              style={[
-                styles.back_icon_container,
-                {
-                  height: 50,
-                  width: 50,
-                  alignItems: 'center',
-                },
-              ]}>
-              <FixedNeomorphContainer style={styles.back_icon_container}>
-                <AppIconButton
-                  onPress={navigatToCart}
-                  style={styles.back_icon}
-                  containerStyle={styles.back_icon_container}
-                  name="ios-cart-outline"
-                  size={20}
-                  type={IconType.ionicons}
-                  color={iconColor}
-                />
-              </FixedNeomorphContainer>
-              <View
-                style={{
-                  width: 18,
-                  height: 18,
-                  borderRadius: 36,
-                  backgroundColor: LIGHT_COLORS.primary,
-                  position: 'absolute',
-                  top: 0,
-                  right: 0,
-
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                }}>
-                <AppText
-                  style={{color: 'white', fontSize: responsiveFontSize(4)}}>
-                  0
-                </AppText>
-              </View>
-            </View>
-          ) : (
-            rightItem
-          )}
+          {cart ? <CartIcon /> : rightItem}
         </View>
       </View>
     </>
+  );
+};
+
+const CartIcon = () => {
+  const {items_count} = useCart();
+  const {
+    colors: {iconColor, backgroundColor},
+  } = useTheme();
+  const navigatToCart = () => {
+    AppNavigation.push('cart');
+  };
+  return (
+    <View
+      style={[
+        styles.back_icon_container,
+        {
+          height: 50,
+          width: 50,
+          alignItems: 'center',
+        },
+      ]}>
+      <FixedNeomorphContainer style={styles.back_icon_container}>
+        <AppIconButton
+          onPress={navigatToCart}
+          style={styles.back_icon}
+          containerStyle={styles.back_icon_container}
+          name="ios-cart-outline"
+          size={20}
+          type={IconType.ionicons}
+          color={iconColor}
+        />
+      </FixedNeomorphContainer>
+      <View style={styles.countText}>
+        <AppText style={{color: 'white', fontSize: responsiveFontSize(4)}}>
+          {items_count > 9 ? '+9' : items_count}
+        </AppText>
+      </View>
+    </View>
   );
 };

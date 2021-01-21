@@ -13,6 +13,9 @@ export default {
   profile: 'الملف الشخصي',
   Add_location: 'اضف عنوان',
   Location: 'الموقع',
-  loading_dots: "تحميل ...."
-
+  loading_dots: 'تحميل ....',
+  addresses_list: 'دفتر العتاوين',
+  change_lang: 'تغير اللغه  LTR',
+  enable_notification: 'الاشعارات',
+  enable_location: 'الموقع',
 };

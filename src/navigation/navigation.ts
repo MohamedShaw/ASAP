@@ -67,6 +67,11 @@ export class CustomNavigation {
     return Navigation.popTo(popTo);
   };
 
+  getCurrentScreenName = () => {
+    console.log("Cuurent screen after init", this.currentScreen);
+
+    return this.currentScreen;
+  };
   setRootScreen = (name: string, passProps?: Object) => {
     return Navigation.setRoot({
       root: {
@@ -87,7 +92,7 @@ export class CustomNavigation {
   };
 
   navigateToTab = (currentTabIndex: any) => {
-    console.log("currentTabIndex", currentTabIndex, this.currentComponentId);
+    console.log('currentTabIndex', currentTabIndex, this.currentComponentId);
 
     Navigation.mergeOptions(this.currentComponentId, {
       bottomTabs: {
@@ -96,8 +101,6 @@ export class CustomNavigation {
     });
   };
   setRootBottomTabs = (tabs: string[], passProps?: Object) => {
-
-
     const children: LayoutTabsChildren[] = tabs.map((i) => ({
       stack: {
         id: i,
@@ -109,17 +112,14 @@ export class CustomNavigation {
             },
             options: {
               bottomTab: {
-                icon: require('../assets/img/noData.png')
-              }
-            }
+                icon: require('../assets/img/noData.png'),
+              },
+            },
           },
         ],
       },
     }));
     console.log('children', children);
-
-
-
 
     return Navigation.setRoot({
       root: {

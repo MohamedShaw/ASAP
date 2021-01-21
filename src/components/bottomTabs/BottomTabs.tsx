@@ -16,9 +16,7 @@ import {useSelector} from 'react-redux';
 import {RootStore} from 'store';
 import {NeomorphContainer} from 'common';
 import {AppNavigation} from 'navigation';
-import {AddItem} from './AddItem';
-// const dummyIcon = require('assets/imgs/dummy.png');
-
+import Navigation from 'navigation/navigation';
 const BAR_HEIGHT_ANDROID = 59;
 const BAR_HEIGHT_IOS = 63;
 export const BOTTOM_BAR_HEIGHT =
@@ -30,21 +28,25 @@ export const tabs = [
     label: 'home',
     iconName: 'home',
     // iconType: IconType.foundation,
+    componentId: 'Component2',
   },
   {
     screen: 'profile',
     label: 'Add Item',
     iconName: 'add',
+    componentId: 'Component3',
     // iconType: IconType.antDesign,
   },
 ];
 
-export const BottomTabs = () => {
+export const BottomTabs = (props) => {
   // const {backgroundColor} = useSelector(
   //   (state: RootStore) => state.theme.colors,
   // );
-  const [active, setActive] = useState('home');
-  // const {componentId} = props;
+  console.log('props--->', props);
+  console.log('AppNavigation', AppNavigation.currentComponentId);
+
+  const {componentId} = props;
   // const onSelect = useCallback((index) => {});
   const onSelect = useCallback((index) => {
     AppNavigation.navigateToTab(index);
@@ -54,7 +56,7 @@ export const BottomTabs = () => {
     <NeomorphContainer>
       <View style={[styles.content, {height: BOTTOM_BAR_HEIGHT}]}>
         {tabs.map((tab, index) => {
-          return tab.label == active ? (
+          return tab.componentId == componentId ? (
             <ActiveTabIcon key={index} {...tab} />
           ) : (
             <InActiveTabIcon
@@ -62,7 +64,6 @@ export const BottomTabs = () => {
               // index={index}
               {...tab}
               onSelect={async () => {
-                await setActive(tab.label);
                 onSelect(index);
               }}
             />

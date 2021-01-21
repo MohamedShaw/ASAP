@@ -1,6 +1,6 @@
 import { createScreen } from '../navigation';
 import { Screen } from '../navigation';
-import { Intro } from './Intro/Intro';
+import { Profile } from './profile/Profile';
 import { Home } from './home/Home';
 import { ProductDetails } from './productDetails/ProductDetails';
 import { Cart } from './cart/Cart';
@@ -8,7 +8,7 @@ import { MapScreen } from './mapScreen/MapScreen';
 import { Addresses } from './addresses/Addresses';
 
 export const screens: Screen[] = [
-  { name: 'profile', component: Intro },
+  { name: 'profile', component: Profile },
   { name: 'home', component: Home },
   { name: 'productDetails', component: ProductDetails },
   { name: 'cart', component: Cart },

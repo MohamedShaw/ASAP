@@ -21,7 +21,15 @@ export const ActiveTabIcon: React.FC<Props> = (props: Props) => {
   return (
     <View style={styles.icon}>
       <FixedInnerNeomorphContainer style={styles.icon_container}>
-        <AppIcon color={primary} name={iconName} size={24} type={iconType} />
+        <AppIcon
+          color={primary}
+          name={iconName}
+          size={24}
+          type={iconType}
+          onPress={() => {
+            onSelect();
+          }}
+        />
       </FixedInnerNeomorphContainer>
     </View>
   );

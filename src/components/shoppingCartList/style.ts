@@ -10,6 +10,7 @@ export const styles = StyleSheet.create({
 
     listContainer: {
         alignSelf: 'stretch',
+        paddingHorizontal: 7
     },
 
     totalContainer: {
@@ -20,6 +21,7 @@ export const styles = StyleSheet.create({
         justifyContent: 'space-between',
         paddingHorizontal: 7,
         borderRadius: 7,
+        marginHorizontal: 7
     }
 
 })

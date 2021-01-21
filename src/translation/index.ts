@@ -24,6 +24,7 @@ export const setLang = (lang: Lang) => {
 export const langConfig = async (lang?: Lang) => {
   const defaultLang = await AsyncStorage.getItem('lang');
   i18n.translations = available_languages;
+
   let currentLang = i18n.currentLocale().split('-')[0];
   if (!Lang[currentLang as Lang]) {
     currentLang = Lang.en;
@@ -31,7 +32,6 @@ export const langConfig = async (lang?: Lang) => {
   i18n.locale = defaultLang || lang || currentLang;
   i18n.defaultLocale = i18n.locale;
   I18nManager.allowRTL(true);
-
 
   await I18nManager.forceRTL(i18n.locale == Lang.ar);
 

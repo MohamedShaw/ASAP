@@ -13,4 +13,8 @@ export default {
   Add_location: 'Add Location',
   loading_dots: 'loading ...',
   Location: 'Location',
+  addresses_list: 'Addresses',
+  change_lang: 'Change Lang RTL',
+  enable_notification: 'Notifications',
+  enable_location: 'enable location',
 };

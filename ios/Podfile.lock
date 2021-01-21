@@ -245,7 +245,17 @@ PODS:
     - React-cxxreact (= 0.63.4)
     - React-jsi (= 0.63.4)
   - React-jsinspector (0.63.4)
+  - react-native-connectivity-status (1.5.1):
+    - React
+  - react-native-geolocation (2.0.2):
+    - React
+  - react-native-geolocation-service (5.1.1):
+    - React
+  - react-native-maps (0.27.1):
+    - React
   - react-native-netinfo (5.9.9):
+    - React-Core
+  - react-native-restart (0.0.20):
     - React-Core
   - React-RCTActionSheet (0.63.4):
     - React-Core/RCTActionSheetHeaders (= 0.63.4)
@@ -307,13 +317,15 @@ PODS:
     - React-Core (= 0.63.4)
     - React-cxxreact (= 0.63.4)
     - React-jsi (= 0.63.4)
-  - ReactNativeNavigation (7.7.0):
-    - React-Core
+  - ReactNativeART (1.2.0):
+    - React
+  - ReactNativeNavigation (6.12.2):
+    - React
     - React-RCTImage
     - React-RCTText
-    - ReactNativeNavigation/Core (= 7.7.0)
-  - ReactNativeNavigation/Core (7.7.0):
-    - React-Core
+    - ReactNativeNavigation/Core (= 6.12.2)
+  - ReactNativeNavigation/Core (6.12.2):
+    - React
     - React-RCTImage
     - React-RCTText
   - RNCAsyncStorage (1.13.2):
@@ -326,6 +338,8 @@ PODS:
     - React-Core
   - RNI18n (2.0.15):
     - React
+  - RNPermissions (3.0.0):
+    - React-Core
   - RNSnackbar (2.3.1):
     - React-Core
   - RNVectorIcons (7.1.0):
@@ -377,7 +391,12 @@ DEPENDENCIES:
   - React-jsi (from `../node_modules/react-native/ReactCommon/jsi`)
   - React-jsiexecutor (from `../node_modules/react-native/ReactCommon/jsiexecutor`)
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
+  - react-native-connectivity-status (from `../node_modules/react-native-connectivity-status`)
+  - "react-native-geolocation (from `../node_modules/@react-native-community/geolocation`)"
+  - react-native-geolocation-service (from `../node_modules/react-native-geolocation-service`)
+  - react-native-maps (from `../node_modules/react-native-maps`)
   - "react-native-netinfo (from `../node_modules/@react-native-community/netinfo`)"
+  - react-native-restart (from `../node_modules/react-native-restart`)
   - React-RCTActionSheet (from `../node_modules/react-native/Libraries/ActionSheetIOS`)
   - React-RCTAnimation (from `../node_modules/react-native/Libraries/NativeAnimation`)
   - React-RCTBlob (from `../node_modules/react-native/Libraries/Blob`)
@@ -388,11 +407,13 @@ DEPENDENCIES:
   - React-RCTText (from `../node_modules/react-native/Libraries/Text`)
   - React-RCTVibration (from `../node_modules/react-native/Libraries/Vibration`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
+  - "ReactNativeART (from `../node_modules/@react-native-community/art`)"
   - ReactNativeNavigation (from `../node_modules/react-native-navigation`)
   - "RNCAsyncStorage (from `../node_modules/@react-native-async-storage/async-storage`)"
   - RNFastImage (from `../node_modules/react-native-fast-image`)
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - RNI18n (from `../node_modules/react-native-i18n`)
+  - RNPermissions (from `../node_modules/react-native-permissions`)
   - RNSnackbar (from `../node_modules/react-native-snackbar`)
   - RNVectorIcons (from `../node_modules/react-native-vector-icons`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
@@ -446,8 +467,18 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/jsiexecutor"
   React-jsinspector:
     :path: "../node_modules/react-native/ReactCommon/jsinspector"
+  react-native-connectivity-status:
+    :path: "../node_modules/react-native-connectivity-status"
+  react-native-geolocation:
+    :path: "../node_modules/@react-native-community/geolocation"
+  react-native-geolocation-service:
+    :path: "../node_modules/react-native-geolocation-service"
+  react-native-maps:
+    :path: "../node_modules/react-native-maps"
   react-native-netinfo:
     :path: "../node_modules/@react-native-community/netinfo"
+  react-native-restart:
+    :path: "../node_modules/react-native-restart"
   React-RCTActionSheet:
     :path: "../node_modules/react-native/Libraries/ActionSheetIOS"
   React-RCTAnimation:
@@ -468,6 +499,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/Libraries/Vibration"
   ReactCommon:
     :path: "../node_modules/react-native/ReactCommon"
+  ReactNativeART:
+    :path: "../node_modules/@react-native-community/art"
   ReactNativeNavigation:
     :path: "../node_modules/react-native-navigation"
   RNCAsyncStorage:
@@ -478,6 +511,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-gesture-handler"
   RNI18n:
     :path: "../node_modules/react-native-i18n"
+  RNPermissions:
+    :path: "../node_modules/react-native-permissions"
   RNSnackbar:
     :path: "../node_modules/react-native-snackbar"
   RNVectorIcons:
@@ -513,7 +548,12 @@ SPEC CHECKSUMS:
   React-jsi: a0418934cf48f25b485631deb27c64dc40fb4c31
   React-jsiexecutor: 93bd528844ad21dc07aab1c67cb10abae6df6949
   React-jsinspector: 58aef7155bc9a9683f5b60b35eccea8722a4f53a
-  react-native-netinfo: 0212ce8604e88edf686f1481b925b17a42a52449
+  react-native-connectivity-status: 2325459ddad171e1f88af01f52a6a1f34ad37102
+  react-native-geolocation: cbd9d6bd06bac411eed2671810f454d4908484a8
+  react-native-geolocation-service: f33626f1ae12381ca2ae60f98b2f5edd676bf95a
+  react-native-maps: f4b89da81626ad7f151a8bfcb79733295d31ce5c
+  react-native-netinfo: 77d133105df525d4a11f10fcaa8d0b8883ea6429
+  react-native-restart: 6cc683e208c080581c147d0875609e64572a9443
   React-RCTActionSheet: 89a0ca9f4a06c1f93c26067af074ccdce0f40336
   React-RCTAnimation: 1bde3ecc0c104c55df246eda516e0deb03c4e49b
   React-RCTBlob: a97d378b527740cc667e03ebfa183a75231ab0f0
@@ -524,18 +564,20 @@ SPEC CHECKSUMS:
   React-RCTText: 5c51df3f08cb9dedc6e790161195d12bac06101c
   React-RCTVibration: ae4f914cfe8de7d4de95ae1ea6cc8f6315d73d9d
   ReactCommon: 73d79c7039f473b76db6ff7c6b159c478acbbb3b
-  ReactNativeNavigation: 8a9cf15040eeffcf4a6c750ae7e9a63042aea0aa
-  RNCAsyncStorage: 05bae7ecfab1cbd5441993f1ca098f7c3b3f8d0e
+  ReactNativeART: f003b07dfa7098aa419ed95b69560923440b1eee
+  ReactNativeNavigation: aefc8debafb4a374575adafb44a3352b9d5b618a
+  RNCAsyncStorage: bc2f81cc1df90c267ce9ed30bb2dbc93b945a8ee
   RNFastImage: d4870d58f5936111c56218dbd7fcfc18e65b58ff
   RNGestureHandler: 9b7e605a741412e20e13c512738a31bd1611759b
   RNI18n: e2f7e76389fcc6e84f2c8733ea89b92502351fd8
-  RNSnackbar: 559b3b4fedd6bbbe017e4f357ae230536b35b115
+  RNPermissions: 350964d19150b183796a88180fb7ec62a1e41422
+  RNSnackbar: 43b2ac573962fefcd20718dcf4e6b204f347f4e5
   RNVectorIcons: bc69e6a278b14842063605de32bec61f0b251a59
   SDWebImage: 0b2ba0d56479bf6a45ecddbfd5558bea93150d25
   SDWebImageWebPCoder: d0dac55073088d24b2ac1b191a71a8f8d0adac21
   Yoga: 4bd86afe9883422a7c4028c00e34790f560923d6
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: 54dcb825e89253013b9e9720ed7393b8c3ff6af2
+PODFILE CHECKSUM: 1a7e5d1aee5a7966bfc183f24df412d0dff90c46
 
-COCOAPODS: 1.9.0
+COCOAPODS: 1.8.4
