@@ -6,6 +6,8 @@ import { ProductDetails } from './productDetails/ProductDetails';
 import { Cart } from './cart/Cart';
 import { MapScreen } from './mapScreen/MapScreen';
 import { Addresses } from './addresses/Addresses';
+import {  SignUp} from "./signUp/SignUp";
+import { AddTask } from './addTask/AddTask';
 
 export const screens: Screen[] = [
   { name: 'profile', component: Profile },
@@ -16,6 +18,14 @@ export const screens: Screen[] = [
   {
     name: 'addresses',
     component: Addresses,
+  },
+  {
+    name: 'signUp',
+    component: SignUp,
+  },
+  {
+    name: 'addTask',
+    component: AddTask,
   },
 ];
 

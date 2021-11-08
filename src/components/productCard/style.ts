@@ -53,7 +53,7 @@ export const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
     },
-    trashIcon: { position: 'absolute', top: 10, right: 5 },
+    trashIcon: { position: 'absolute', bottom: 10, left: 5 },
     counterStyle: {
         color: LIGHT_COLORS.primary,
         fontSize: responsiveFontSize(6),

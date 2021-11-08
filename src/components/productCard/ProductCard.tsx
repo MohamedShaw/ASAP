@@ -15,23 +15,15 @@ import {Description} from './Description';
 import {useCart} from 'slices/cart';
 interface Props {
   data?: {
-    title?: String;
-
-    image?: String;
-    category?: String;
-    price?: Number;
-    id?: Number;
+    description?: String;
+    _id: string;
   };
-  card?: Boolean;
-  countOfProduct?: Number;
 }
 export const ProductCard: React.FC<Props> = (props) => {
-  const {
-    data: {title, image, price, category, id},
-    cart = false,
-    countOfProduct,
-  } = props;
+  const {data} = props;
 
+  console.log("data", data?._id);
+  
   const onNavigate = () => {
     AppNavigation.push('productDetails', {
       data: props.data,
@@ -41,21 +33,8 @@ export const ProductCard: React.FC<Props> = (props) => {
 
   return (
     <NeomorphContainer style={styles.neoMorphContainer}>
-      <RectButton style={styles.buttonContainer} onPress={!cart && onNavigate}>
-        <AppImage
-          source={{uri: image}}
-          style={styles.imageContainer}
-          resizeMode="contain"
-        />
-        <Description
-          title={title}
-          price={price}
-          category={category}
-          id={id}
-          image={image}
-          countOfProduct={countOfProduct}
-          cart={cart}
-        />
+      <RectButton style={styles.buttonContainer}>
+        <Description title={data?.description} id={data?._id} />
       </RectButton>
     </NeomorphContainer>
   );

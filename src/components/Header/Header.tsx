@@ -19,6 +19,7 @@ interface Props {
   onBackPress?: () => void;
   cart?: boolean;
   home?: boolean;
+  center?: boolean;
 }
 
 export const AppHeader = (props: Props) => {
@@ -38,34 +39,41 @@ export const AppHeader = (props: Props) => {
     <>
       <SafeAreaView style={{backgroundColor}} />
       <View style={[styles.container, {backgroundColor}]}>
-        <View style={[styles.left, styles.items]}>
-          {!hideBack && (
-            <FixedNeomorphContainer style={styles.back_icon_container}>
-              <AppIconButton
-                onPress={onBackPress}
-                style={styles.back_icon}
-                containerStyle={styles.back_icon_container}
-                name="back"
-                size={20}
-                color={iconColor}
-              />
-            </FixedNeomorphContainer>
-          )}
-          {home && (
-            <FixedNeomorphContainer style={styles.back_icon_container}>
-              <AppIconButton
-                onPress={onBackPress}
-                style={styles.back_icon}
-                containerStyle={styles.back_icon_container}
-                name="home"
-                size={20}
-                color={iconColor}
-              />
-            </FixedNeomorphContainer>
-          )}
-          {!home && hideBack && <View style={styles.back_icon_container} />}
-        </View>
-        <View style={[styles.content, styles.items]}>
+        { (
+          <View style={[styles.left, styles.items]}>
+            {!hideBack && (
+              <FixedNeomorphContainer style={styles.back_icon_container}>
+                <AppIconButton
+                  onPress={onBackPress}
+                  style={styles.back_icon}
+                  // containerStyle={styles.back_icon_container}
+                  name="back"
+                  size={20}
+                  color={iconColor}
+                />
+              </FixedNeomorphContainer>
+            )}
+            {home && (
+              <FixedNeomorphContainer style={styles.back_icon_container_home}>
+                <AppIconButton
+                  onPress={onBackPress}
+                  style={styles.back_icon}
+                  containerStyle={styles.back_icon_container_home}
+                  name="home"
+                  size={20}
+                  color={iconColor}
+                />
+              </FixedNeomorphContainer>
+            )}
+            {!home && hideBack && <View style={styles.back_icon_container} />}
+          </View>
+        )}
+        <View
+          style={[
+            styles.content,
+            props.center && {justifyContent: 'center'},
+            styles.items,
+          ]}>
           <AppText
             numberOfLines={1}
             style={[styles.title, {fontWeight: 'Bold'}]}>

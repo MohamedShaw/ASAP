@@ -2,9 +2,11 @@ import { AppNavigation } from '../navigation';
 import { rootStore } from '../store';
 import { tabs } from 'components/bottomTabs/BottomTabs';
 import { Linking } from 'react-native';
+import { requestConfig } from 'api';
 // import { checkUpdate } from 'utils/dev';
 
 export const onAppLaunch = () => {
+  requestConfig()
 
   deebLink();
 
@@ -14,7 +16,7 @@ export const onAppLaunch = () => {
     AppNavigation.setRootScreen('home');
   } else {
     //noAuth
-    AppNavigation.setRootBottomTabs(tabs);
+    AppNavigation.setRootScreen('signUp');
   }
 
   // if (__DEV__) checkUpdate();

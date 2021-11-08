@@ -9,12 +9,14 @@ import { rootStore } from '../store';
 export const requestConfig = () => {
   axios.interceptors.request.use(
     config => {
-      const { user } = rootStore.getState().auth;
+      
+      const user = rootStore.getState().auth;
+
       // const { lang } = rootStore.getState().lang;
       const { Authorization } = config.headers;
       const authorization = user
         ? {
-          Authorization: `Bearer ${user.accessToken}`
+          Authorization: `Bearer ${user.token}`
         }
         : Authorization ? { Authorization } : Authorization;
       return {

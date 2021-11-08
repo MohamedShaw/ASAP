@@ -34,12 +34,21 @@ export const styles = StyleSheet.create({
     height: 38,
     width: 38,
     borderRadius: 9.6,
-    marginLeft: 20,
+    // marginLeft: 20,
     marginRight: 24,
     justifyContent: 'center',
     alignItems: 'center'
   },
   back_icon: {
+  },
+  back_icon_container_home:{
+    height: 38,
+    width: 38,
+    borderRadius: 9.6,
+    marginLeft: 20,
+    marginRight: 24,
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   countText: {
     width: 18,

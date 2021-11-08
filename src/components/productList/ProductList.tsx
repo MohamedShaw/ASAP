@@ -8,8 +8,7 @@ import {API_ENDPOINT} from 'utils/urls.json';
 import I18n from 'react-native-i18n';
 import {ProductCard} from '../productCard/ProductCard';
 import {EmptyList} from '../emptyList/EmptyList';
-import {UseProductList, getProductList} from 'api/ProductApi';
-import {useCart} from 'slices/cart';
+import {getProductList} from 'api/ProductApi';
 interface Props {}
 export const ProductList: React.FC<Props> = () => {
   const [loading, setLoading] = useState<Boolean>(true);
@@ -21,10 +20,10 @@ export const ProductList: React.FC<Props> = () => {
   const getProducts = async (pageNumber) => {
     try {
       const response = await getProductList(pageNumber);
+      console.log("response", response);
+      
 
-      console.log('reponse', response);
-
-      const dataToShow = [...response];
+      const dataToShow = response.data;
       setData(dataToShow);
     } catch (error) {
       showError(I18n.t('error'));

@@ -19,3 +19,5 @@ export { IconType, registerCustomIconType } from './utils/icon';
 export * from './utils/localNotifications';
 export * from './utils/responsiveDimmensions';
 export { AppModal } from "./modal/Modal"
+
+export { AppInput } from './input/Input'

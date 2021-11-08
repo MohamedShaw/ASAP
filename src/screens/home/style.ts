@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import { responsiveHeight } from "common";
+import { LIGHT_COLORS, responsiveHeight } from "common";
 
 export const styles = StyleSheet.create({
   conatiner: {
@@ -23,6 +23,17 @@ export const styles = StyleSheet.create({
   },
   spinnerContainer: {
     height: 80
+  },
+  button: {
+    width: 50,
+    height: 50,
+    borderRadius: 50,
+    position: 'absolute',
+    bottom: 50,
+    right: 25,
+    backgroundColor: LIGHT_COLORS.primary,
+    alignItems: 'center',
+    justifyContent: 'center'
   }
 
 })

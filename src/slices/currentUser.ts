@@ -1,10 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { UserData } from '../models';
 import { useSelector } from 'react-redux';
 import { RootStore } from '../store';
 
 
-const initialState: UserData = {};
+const initialState = {};
 
 export const currentUserSlice = createSlice({
   name: 'currentUser',
@@ -13,7 +12,7 @@ export const currentUserSlice = createSlice({
     logout: state => {
       return initialState;
     },
-    login: (state, action: PayloadAction<UserData>) => {
+    login: (state, action: PayloadAction<any>) => {
       return action.payload;
     },
   },

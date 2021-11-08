@@ -1,4 +1,4 @@
 {
-  "API_ENDPOINT": "https://fakestoreapi.com/",
+  "API_ENDPOINT": "https://api-nodejs-todolist.herokuapp.com",
   "GOOGLEAPIS": "https://maps.googleapis.com/maps/api/geocode/json"
 }

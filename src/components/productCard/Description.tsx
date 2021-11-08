@@ -10,39 +10,30 @@ import {
   AppIconButton,
   FixedNeomorphContainer,
   IconType,
+  AppSpinner,
 } from 'common';
 import {addToCart, removeItemCart} from 'slices/cart';
 import {useDispatch} from 'react-redux';
 import {useTheme} from 'slices';
+import {deleteTask} from 'api/ProductApi';
 
 interface Props {
   title?: String;
-  image?: String;
-  category?: String;
-  price?: Number;
-  id?: Number;
-  countOfProduct?: Number;
-  cart?: Boolean;
+  id: string;
 }
 
-export const Description: React.FC<Props> = ({
-  title,
-  category,
-  price,
-  id,
-  image,
-  countOfProduct,
-  cart,
-}) => {
-  const data = {
-    title,
-    category,
-    price,
-    id,
-    image,
-  };
-
+export const Description: React.FC<Props> = ({title, id}) => {
+  const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
+  const removeTask = async () => {
+    setLoading(true);
+    try {
+      const res = await deleteTask(id);
+    } catch (error) {
+    } finally {
+      setLoading(false);
+    }
+  };
   return (
     <View style={styles.textContainer}>
       <AppText
@@ -52,58 +43,16 @@ export const Description: React.FC<Props> = ({
         }}>
         {title}
       </AppText>
-      <View style={styles.tagCategory}>
-        <AppText numberOfLines={1} style={styles.tagCategoryTest}>
-          {category}
-        </AppText>
-      </View>
-      <View style={styles.priceContainer}>
-        <AppText
-          style={{
-            fontWeight: 'BoldItalic',
-            marginHorizontal: 10,
-          }}>
-          {price}
-        </AppText>
-      </View>
-      <View style={styles.actionContainer}>
-        <ActionButton
-          iconName="add"
-          onPress={() => {
-            dispatch(addToCart({item: data, addWithCount: 1}));
-          }}
-        />
-        {cart && (
-          <AppText
-            style={[
-              styles.counterStyle,
-              {
-                fontWeight: 'ExtraBold',
-              },
-            ]}>
-            {countOfProduct}
-          </AppText>
-        )}
-        {cart && (
-          <ActionButton
-            iconName="minus"
-            type={IconType.entypo}
-            enabled={countOfProduct === 1 ? false : true}
-            onPress={() => {
-              dispatch(addToCart({item: data, addWithCount: -1}));
-            }}
-          />
-        )}
-      </View>
+
       <View style={styles.trashIcon}>
-        {cart && (
+        {loading ? (
+          <AppSpinner />
+        ) : (
           <AppIconButton
             name="trash"
             color={LIGHT_COLORS.errorBackground}
             size={responsiveFontSize(10)}
-            onPress={() => {
-              dispatch(removeItemCart({id: id}));
-            }}
+            onPress={removeTask}
           />
         )}
       </View>

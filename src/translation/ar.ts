@@ -18,4 +18,6 @@ export default {
   change_lang: 'تغير اللغه  LTR',
   enable_notification: 'الاشعارات',
   enable_location: 'الموقع',
+  'signup-field-required':"مطلوب",
+  sign_up:"تسجيل الدخول"
 };
