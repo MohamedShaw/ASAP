@@ -16,7 +16,7 @@ export const onAppLaunch = () => {
     // AppNavigation.setRootScreen('home');
   } else {
     //noAuth
-    AppNavigation.setRootScreen('home');
+    AppNavigation.setRootScreen('splash');
   }
 };
 
