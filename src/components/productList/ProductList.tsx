@@ -3,8 +3,6 @@ import {View, RefreshControl} from 'react-native';
 import {styles} from './style';
 import {AppList, AppSpinner, showError, LIGHT_COLORS} from 'common';
 
-import axios from 'axios';
-import {API_ENDPOINT} from 'utils/urls.json';
 import I18n from 'react-native-i18n';
 import {ProductCard} from '../productCard/ProductCard';
 import {EmptyList} from '../emptyList/EmptyList';
@@ -17,14 +15,11 @@ export const ProductList: React.FC<Props> = () => {
   const [data, setData] = useState<Array<[]>>([]);
   let page = React.useRef(1);
 
-  const getProducts = async (pageNumber) => {
+  const getProducts = async () => {
     try {
-      const response = await getProductList(pageNumber);
-      console.log("response", response);
-      
+      const response = await getProductList();
 
-      const dataToShow = response.data;
-      setData(dataToShow);
+      setData(response);
     } catch (error) {
       showError(I18n.t('error'));
     } finally {
@@ -33,7 +28,9 @@ export const ProductList: React.FC<Props> = () => {
     }
   };
   useEffect(() => {
-    if (!data.length) getProducts(1);
+    if (!data.length) {
+      getProducts(1);
+    }
   }, [loading]);
   const handleMore = () => {
     if (data.length && !loading) {
@@ -56,9 +53,17 @@ export const ProductList: React.FC<Props> = () => {
       renderItem={({item, index}) => <ProductCard data={item} />}
       onEndReached={handleMore}
       style={styles.listContainer}
+      numColumns={2}
       ListFooterComponent={<Footer />}
       ListFooterComponentStyle={styles.spinnerContainer}
       onEndReachedThreshold={0.2}
+      ItemSeparatorComponent={() => (
+        <View style={{height: 28, justifyContent: 'center'}}>
+          <View
+            style={{height: 2, alignSelf: 'stretch', backgroundColor: '#E3E3E3'}}
+          />
+        </View>
+      )}
       refreshControl={
         <RefreshControl
           colors={[LIGHT_COLORS.primary]}

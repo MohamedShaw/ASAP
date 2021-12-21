@@ -16,6 +16,8 @@ target 'kawkibinana' do
 
   pod 'react-native-restart', :path => '../node_modules/react-native-restart'
 
+  pod 'RNReanimated', :path => '../node_modules/react-native-reanimated'
+
   target 'kawkibinanaTests' do
     inherit! :complete
     # Pods for testing

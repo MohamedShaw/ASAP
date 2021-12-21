@@ -1,7 +1,7 @@
 
 import { registerScreens } from 'screens';
 import { setNavigationDefaultOptions } from 'navigation';
-import { Lang, langConfig } from 'translation';
+import { Lang, langConfig, setLang } from 'translation';
 import { listenToInternetStatus } from 'slices';
 import { rootStore, storeConfig } from 'store';
 import { registerCustomIconType } from 'common';
@@ -16,6 +16,8 @@ export const appConfig = async () => {
   //icons
   registerCustomIconType(customIcon);
   //langauges and local config
+  await setLang('en')
+
   await langConfig();
   //listen to network
   rootStore.dispatch(listenToInternetStatus());

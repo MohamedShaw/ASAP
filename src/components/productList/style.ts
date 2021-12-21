@@ -19,7 +19,8 @@ export const styles = StyleSheet.create({
     },
     listContainer: {
         alignSelf: 'stretch',
-        paddingHorizontal: responsiveHeight(3),
+        paddingHorizontal: 13,
+        paddingTop:20
     },
     spinnerContainer: {
         height: 80

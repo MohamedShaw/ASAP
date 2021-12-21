@@ -26,6 +26,7 @@ export const langConfig = async (lang?: Lang) => {
   i18n.translations = available_languages;
 
   let currentLang = i18n.currentLocale().split('-')[0];
+  
   if (!Lang[currentLang as Lang]) {
     currentLang = Lang.en;
   }

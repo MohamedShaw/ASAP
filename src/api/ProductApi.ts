@@ -4,11 +4,11 @@ import axios from 'axios';
 import { API_ENDPOINT } from 'utils/urls.json';
 
 
-export const getProductList = async (page: number) => {
+export const getProductList = async () => {
 
     try {
         const response = await axios.get(
-            `${API_ENDPOINT}/task`
+            `${API_ENDPOINT}products`
         );
 
 

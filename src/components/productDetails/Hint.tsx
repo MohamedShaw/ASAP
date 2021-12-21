@@ -18,7 +18,7 @@ export const Hint: React.FC<Props> = ({label}) => {
           fontWeight: 'ExtraBold',
         },
       ]}>
-      {label} :
+      {label} 
     </AppText>
   );
 };

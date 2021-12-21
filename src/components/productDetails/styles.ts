@@ -7,11 +7,27 @@ export const styles = StyleSheet.create({
         color: LIGHT_COLORS.primary,
     },
     image: {
-        width: '100%',
-        height: responsiveHeight(30),
+        width: '70%',
+        height: responsiveHeight(22),
     },
     hint: {
         fontSize: responsiveFontSize(8),
         marginVertical: responsiveHeight(2),
     },
+    imageContainer:{
+        padding: 20,
+        backgroundColor: 'white',
+        width:'65%',
+        alignItems:'center',
+        borderRadius:25
+       
+      },
+      wrapper:{
+        backgroundColor: '#EAEAEA',
+        borderRadius: 15,
+        paddingHorizontal: 10,
+        paddingTop: 20,
+        borderColor: '#EAEAEA',
+        borderWidth: 1,
+      }
 });

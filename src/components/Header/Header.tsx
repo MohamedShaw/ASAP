@@ -39,7 +39,7 @@ export const AppHeader = (props: Props) => {
     <>
       <SafeAreaView style={{backgroundColor}} />
       <View style={[styles.container, {backgroundColor}]}>
-        { (
+        
           <View style={[styles.left, styles.items]}>
             {!hideBack && (
               <FixedNeomorphContainer style={styles.back_icon_container}>
@@ -53,21 +53,9 @@ export const AppHeader = (props: Props) => {
                 />
               </FixedNeomorphContainer>
             )}
-            {home && (
-              <FixedNeomorphContainer style={styles.back_icon_container_home}>
-                <AppIconButton
-                  onPress={onBackPress}
-                  style={styles.back_icon}
-                  containerStyle={styles.back_icon_container_home}
-                  name="home"
-                  size={20}
-                  color={iconColor}
-                />
-              </FixedNeomorphContainer>
-            )}
-            {!home && hideBack && <View style={styles.back_icon_container} />}
+
           </View>
-        )}
+        
         <View
           style={[
             styles.content,
@@ -80,9 +68,11 @@ export const AppHeader = (props: Props) => {
             {title}
           </AppText>
         </View>
-        <View style={[styles.right, styles.items]}>
-          {cart ? <CartIcon /> : rightItem}
-        </View>
+        {cart && (
+          <View style={[styles.right, styles.items]}>
+            {cart ? <CartIcon /> : rightItem}
+          </View>
+        )}
       </View>
     </>
   );

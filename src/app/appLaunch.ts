@@ -13,13 +13,11 @@ export const onAppLaunch = () => {
   const { user } = rootStore.getState().auth;
   if (user) {
     // authenticated
-    AppNavigation.setRootScreen('home');
+    // AppNavigation.setRootScreen('home');
   } else {
     //noAuth
-    AppNavigation.setRootScreen('signUp');
+    AppNavigation.setRootScreen('home');
   }
-
-  // if (__DEV__) checkUpdate();
 };
 
 const deebLink = () => {

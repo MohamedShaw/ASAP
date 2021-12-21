@@ -120,6 +120,7 @@ export const AppInput = forwardRef<TextInput, Props>((props, ref) => {
         style={{
           height,
           alignSelf: 'stretch',
+          borderRadius:25,
         }}>
         <View style={styles.container}>
           {leftItem}

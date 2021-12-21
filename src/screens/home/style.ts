@@ -5,7 +5,8 @@ export const styles = StyleSheet.create({
   conatiner: {
     flex: 1,
     paddingHorizontal: 0,
-    paddingVertical: 0
+    paddingVertical: 0,
+    backgroundColor:'#F4F4F4'
   },
   imageContainer: {
     flex: 1,

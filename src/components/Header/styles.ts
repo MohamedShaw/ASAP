@@ -8,6 +8,7 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+    paddingHorizontal:20
   },
   items: {
     alignSelf: 'stretch',
@@ -37,7 +38,8 @@ export const styles = StyleSheet.create({
     // marginLeft: 20,
     marginRight: 24,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    backgroundColor:'white'
   },
   back_icon: {
   },

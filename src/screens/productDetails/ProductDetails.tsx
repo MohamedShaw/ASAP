@@ -13,36 +13,11 @@ import {View} from 'react-native';
 export const ProductDetails: NavigationFunctionComponent = (props) => {
   const {deepLink, data, id} = props;
 
-  const [loading, setLoading] = useState<Boolean>(deepLink);
-  const [productData, setData] = useState(!data ? null : data);
-
-  useEffect(() => {
-    if (id) getProduct();
-  }, []);
-  const getProduct = async () => {
-    setLoading(true);
-    try {
-      const res = await axios.get(`${API_ENDPOINT}products/${id}`);
-      setData(res.data);
-    } catch (error) {
-      setData(null);
-      showError('error');
-    } finally {
-      setLoading(false);
-    }
-  };
-
   return (
     <>
       <AppHeader title={I18n.t('product_details')} />
       <AppScreenContainer style={styles.container}>
-        {loading ? (
-          <AppSpinner />
-        ) : productData === null ? (
-          <EmptyList />
-        ) : (
-          <Details data={productData} />
-        )}
+        <Details data={props.data} />
       </AppScreenContainer>
     </>
   );

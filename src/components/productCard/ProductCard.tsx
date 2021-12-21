@@ -17,13 +17,14 @@ interface Props {
   data?: {
     description?: String;
     _id: string;
+    title?: string;
+    image: string;
+    category: string;
   };
 }
 export const ProductCard: React.FC<Props> = (props) => {
   const {data} = props;
 
-  console.log("data", data?._id);
-  
   const onNavigate = () => {
     AppNavigation.push('productDetails', {
       data: props.data,
@@ -32,10 +33,16 @@ export const ProductCard: React.FC<Props> = (props) => {
   };
 
   return (
-    <NeomorphContainer style={styles.neoMorphContainer}>
-      <RectButton style={styles.buttonContainer}>
-        <Description title={data?.description} id={data?._id} />
-      </RectButton>
-    </NeomorphContainer>
+    <View style={{flex: 1, backgroundColor: 'transparent'}}>
+      <NeomorphContainer style={styles.neoMorphContainer}>
+        <RectButton style={styles.buttonContainer} onPress={onNavigate}>
+          <AppImage
+            source={{uri: data?.image}}
+            style={{width: '80%', height: 95}}
+          />
+        </RectButton>
+        <Description title={data?.category} />
+      </NeomorphContainer>
+    </View>
   );
 };

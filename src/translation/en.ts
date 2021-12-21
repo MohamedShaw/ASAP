@@ -17,4 +17,5 @@ export default {
   change_lang: 'Change Lang RTL',
   enable_notification: 'Notifications',
   enable_location: 'enable location',
+  sign_up:"Sign up"
 };
